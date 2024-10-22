@@ -1,0 +1,127 @@
+%% \documentclass[a4paper,10pt]{standalone}
+\documentclass[10pt]{article}
+
+\usepackage[a4paper, landscape, margin=1cm]{geometry}
+
+\usepackage[OT1]{fontenc}
+\usepackage{lmodern} % Postscript layout of CM with T1 coding
+\renewcommand*\familydefault{\sfdefault}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\pagenumbering{gobble}
+
+\def\lm{18mm}
+\def\H{30mm}
+\def\Lm{13*\lm}
+
+\def\icon{
+  \node[] at (.5*\lm,14mm) {\includegraphics[width=8mm]{icon/light.pdf}};
+  \node[] at (.5*\lm,5mm) {\includegraphics[width=8mm]{icon/socket.pdf}};
+}
+\def\piececolor{
+  \fill[black!10] (0,0) rectangle (\lm,\H);
+}
+\def\machinecolor{
+  \fill[blue!45] (0,0) rectangle (\lm,\H);
+}
+\def\warningcolor{
+  \fill[orange!60] (0,0) rectangle (\lm,\H);  
+}
+
+\begin{document}
+\begin{tikzpicture}
+  \begin{scope}[xshift=0]
+    \fill[red!30] (0,0) rectangle (2*\lm,\H);
+    \draw (1*\lm,.5*\H) node {\textbf{Disjoncteur}};
+    \draw (1*\lm,.5*\H-1em) node {30\,mA};
+  \end{scope}
+  % #1
+  \begin{scope}[xshift=2*\lm]
+    \piececolor
+    \draw (.5*\lm,\H-1em) node {\textbf{Cuisine}};
+    \icon
+  \end{scope}
+  % #2
+  \begin{scope}[xshift=3*\lm]
+    \warningcolor
+    % \draw (.5*\lm,\H-1em) node {Chaudière};
+    \node[] at (.5*\lm,.5*\H) {\includegraphics[width=12mm]{icon/heater.pdf}};
+  \end{scope}
+  % #3
+  \begin{scope}[xshift=4*\lm]
+    % Lave linge / Vaissele
+    \machinecolor
+    % \draw (.5*\lm,\H-1em) node {Lave};
+    % \draw (.5*\lm,\H-10mm) node {Linge};
+    % \draw (.5*\lm,20mm) node {Vaisselle};
+    % \node[] at (.5*\lm,\H-2em) {\includegraphics[width=10mm]{icon/dishwasher.pdf}};
+    % \node[] at (.5*\lm,10mm) {\includegraphics[width=12mm]{icon/washing-machine.pdf}};
+    \node[] at (.5*\lm,.80*\H) {\includegraphics[width=8mm]{icon/dishwasher.pdf}};
+    \node[] at (.5*\lm,.45*\H) {\includegraphics[width=10mm]{icon/washing-machine.pdf}};
+    \node[] at (.5*\lm,.15*\H) {\includegraphics[width=6mm]{icon/router.pdf}};
+  \end{scope}
+  % #4
+  \begin{scope}[xshift=5*\lm]
+    \warningcolor
+    % \draw (.5*\lm,\H-1em) node {Frigo};
+    \node[] at (.5*\lm+2mm,.5*\H) {\includegraphics[width=12mm]{icon/freezer.pdf}};
+  \end{scope}
+  % #5
+  \begin{scope}[xshift=6*\lm]
+    \machinecolor
+    % \draw (.5*\lm,\H-1em) node {Four};
+    \node[] at (.5*\lm,.5*\H) {\includegraphics[width=10mm]{icon/oven}};
+  \end{scope}
+  % #6
+  \begin{scope}[xshift=7*\lm]
+    \machinecolor
+    \draw      (.5*\lm,\H-1em) node {\textbf{Cuisine}};
+    \draw      (.5*\lm,.60*\H) node {LED};
+    \node[] at (.5*\lm,.35*\H) {\includegraphics[width=10mm]{icon/fan.pdf}};
+  \end{scope}
+  % #7
+  \begin{scope}[xshift=8*\lm]
+    \piececolor
+    \draw (.5*\lm,\H-1em) node {\textbf{Pièce}};
+    \icon
+  \end{scope}
+  % #8
+  \begin{scope}[xshift=9*\lm]
+    \piececolor
+    \draw (.5*\lm,\H-1em) node {\textbf{Chambre}};
+    \icon
+  \end{scope}
+  % #9
+  \begin{scope}[xshift=10*\lm]
+    \piececolor
+    \draw (.5*\lm,\H-1em) node {\textbf{Séjour}};
+    \draw (.5*\lm,\H-2.5em) node {Volet};
+    \icon
+  \end{scope}
+  % #10
+  \begin{scope}[xshift=11*\lm]
+    \piececolor
+    \draw (.5*\lm,\H-1em) node {\textbf{Couloir}};
+    \draw (.5*\lm,\H-2em) node {\textbf{SB}};
+    \icon
+  \end{scope}
+  % #11
+  \begin{scope}[xshift=12*\lm]
+    \machinecolor
+    \draw (.5*\lm,.5*\H) node {\textbf{Sonnette}};
+  \end{scope}
+  %
+  \draw (0,0) rectangle (\Lm,\H);
+  \foreach \x in {2,...,12}
+    \draw (\x*\lm,0) --  (\x*\lm,\H);
+\end{tikzpicture}\\[2.5em]
+Dimension : 235x30\,mm 13 modules de 18 mm
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: ""
+%%% End:
