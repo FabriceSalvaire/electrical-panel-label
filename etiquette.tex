@@ -1,8 +1,20 @@
-%% \documentclass[a4paper,10pt]{standalone}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Étiquettes pour Tableau Électrique
+%% Labels for Electrical Panel 
+%%
+%% LaTeX file for LuaLaTeX
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \documentclass[a4paper,10pt]{standalone}
 \documentclass[10pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[a4paper, landscape, margin=1cm]{geometry}
 
+% use sans-serif font
 \usepackage[OT1]{fontenc}
 \usepackage{lmodern} % Postscript layout of CM with T1 coding
 \renewcommand*\familydefault{\sfdefault}
@@ -10,16 +22,24 @@
 \usepackage{tikz}
 \usetikzlibrary{calc}
 
+% disable page numbering
 \pagenumbering{gobble}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% module size
 \def\lm{18mm}
 \def\H{30mm}
+% panel size
 \def\Lm{13*\lm}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \def\icon{
-  \node[] at (.5*\lm,14mm) {\includegraphics[width=8mm]{icon/light.pdf}};
-  \node[] at (.5*\lm,5mm) {\includegraphics[width=8mm]{icon/socket.pdf}};
+  \node at (.5*\lm,13mm) {\includegraphics[width=7.5mm]{icon/pdf/light.pdf}};
+  \node at (.5*\lm,5mm) {\includegraphics[width=7.5mm]{icon/pdf/socket.pdf}};
 }
+
 \def\piececolor{
   \fill[black!10] (0,0) rectangle (\lm,\H);
 }
@@ -30,56 +50,57 @@
   \fill[orange!60] (0,0) rectangle (\lm,\H);  
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 \begin{tikzpicture}
+  %
   \begin{scope}[xshift=0]
-    \fill[red!30] (0,0) rectangle (2*\lm,\H);
+    \fill[red!40] (0,0) rectangle (2*\lm,\H);
     \draw (1*\lm,.5*\H) node {\textbf{Disjoncteur}};
     \draw (1*\lm,.5*\H-1em) node {30\,mA};
   \end{scope}
   % #1
   \begin{scope}[xshift=2*\lm]
     \piececolor
-    \draw (.5*\lm,\H-1em) node {\textbf{Cuisine}};
+    % \draw (.5*\lm,\H-1em) node {\textbf{Cuisine}};
     \icon
   \end{scope}
   % #2
   \begin{scope}[xshift=3*\lm]
     \warningcolor
     % \draw (.5*\lm,\H-1em) node {Chaudière};
-    \node[] at (.5*\lm,.5*\H) {\includegraphics[width=12mm]{icon/heater.pdf}};
+    \node at (.5*\lm,.4*\H) {\includegraphics[width=12mm]{icon/pdf/heater.pdf}};
   \end{scope}
   % #3
   \begin{scope}[xshift=4*\lm]
-    % Lave linge / Vaissele
+    % Lave linge / Vaisselle
     \machinecolor
-    % \draw (.5*\lm,\H-1em) node {Lave};
-    % \draw (.5*\lm,\H-10mm) node {Linge};
-    % \draw (.5*\lm,20mm) node {Vaisselle};
-    % \node[] at (.5*\lm,\H-2em) {\includegraphics[width=10mm]{icon/dishwasher.pdf}};
-    % \node[] at (.5*\lm,10mm) {\includegraphics[width=12mm]{icon/washing-machine.pdf}};
-    \node[] at (.5*\lm,.80*\H) {\includegraphics[width=8mm]{icon/dishwasher.pdf}};
-    \node[] at (.5*\lm,.45*\H) {\includegraphics[width=10mm]{icon/washing-machine.pdf}};
-    \node[] at (.5*\lm,.15*\H) {\includegraphics[width=6mm]{icon/router.pdf}};
+    % \node at (.5*\lm,\H-2em) {\includegraphics[width=10mm]{icon/pdf/dishwasher.pdf}};
+    % \node at (.5*\lm,10mm) {\includegraphics[width=12mm]{icon/pdf/washing-machine.pdf}};
+    \node at (.25*\lm,.5*\H) {\includegraphics[width=8mm]{icon/pdf/dishwasher.pdf}};
+    \node at (.75*\lm,.5*\H) {\includegraphics[width=9.5mm]{icon/pdf/washing-machine.pdf}};
+    \node at (.5*\lm,.15*\H) {\includegraphics[width=5mm]{icon/pdf/router.pdf}};
   \end{scope}
   % #4
   \begin{scope}[xshift=5*\lm]
     \warningcolor
     % \draw (.5*\lm,\H-1em) node {Frigo};
-    \node[] at (.5*\lm+2mm,.5*\H) {\includegraphics[width=12mm]{icon/freezer.pdf}};
+    \node at (.5*\lm+2mm,.4*\H) {\includegraphics[width=12mm]{icon/pdf/freezer.pdf}};
   \end{scope}
   % #5
   \begin{scope}[xshift=6*\lm]
     \machinecolor
     % \draw (.5*\lm,\H-1em) node {Four};
-    \node[] at (.5*\lm,.5*\H) {\includegraphics[width=10mm]{icon/oven}};
+    \node at (.5*\lm,.4*\H) {\includegraphics[width=10mm]{icon/pdf/oven}};
   \end{scope}
   % #6
   \begin{scope}[xshift=7*\lm]
     \machinecolor
-    \draw      (.5*\lm,\H-1em) node {\textbf{Cuisine}};
-    \draw      (.5*\lm,.60*\H) node {LED};
-    \node[] at (.5*\lm,.35*\H) {\includegraphics[width=10mm]{icon/fan.pdf}};
+    % \draw (.5*\lm,\H-1em) node {\textbf{Cuisine}};
+    \node at (.5*\lm,.6*\H) {\includegraphics[width=5mm]{icon/pdf/socket.pdf}};
+    \draw (.35*\lm,.4*\H) node {LED};
+    \node at (.75*\lm,.4*\H) {\includegraphics[width=7mm]{icon/pdf/fan.pdf}};
   \end{scope}
   % #7
   \begin{scope}[xshift=8*\lm]
@@ -97,7 +118,7 @@
   \begin{scope}[xshift=10*\lm]
     \piececolor
     \draw (.5*\lm,\H-1em) node {\textbf{Séjour}};
-    \draw (.5*\lm,\H-2.5em) node {Volet};
+    \draw (.5*\lm,\H-3em) node {Volet};
     \icon
   \end{scope}
   % #10
@@ -113,13 +134,27 @@
     \draw (.5*\lm,.5*\H) node {\textbf{Sonnette}};
   \end{scope}
   %
-  \draw (0,0) rectangle (\Lm,\H);
+  % Cadre
+  % \draw (0,0) rectangle (\Lm,\H);
+  \draw (-1cm,0)   -- (\Lm+1cm,0);
+  \draw (-1cm,\H)  -- (\Lm+1cm,\H);
+  \draw (0,-1cm)   -- (0,\H+1cm);
+  \draw (\Lm,-1cm) -- (\Lm,\H+1cm);
   \foreach \x in {2,...,12}
     \draw (\x*\lm,0) --  (\x*\lm,\H);
-\end{tikzpicture}\\[2.5em]
-Dimension : 235x30\,mm 13 modules de 18 mm
-
+  %
+  % cuisine block 
+  \fill[violet!60] (2*\lm,\H-2em) rectangle (8*\lm,\H);
+  \draw (2*\lm,0) --  (2*\lm,\H);
+  \draw (8*\lm,0) --  (8*\lm,\H);
+  \draw (5*\lm,\H-1em) node[black] {\textbf{Cuisine}};
+  %
+  % expected dimension
+  \node[anchor=north] at (.5*\Lm,-5mm) {Dimension : 235x30\,mm / 13 modules de 18 mm};
+\end{tikzpicture}
 \end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% Local Variables:
 %%% mode: latex
